@@ -6,6 +6,6 @@ import { CommonModule } from '@angular/common';
 })
 export class NgxAbstractModule {
   constructor() {
-    // Test
+    // Testing
   }
 }
