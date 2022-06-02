@@ -4,4 +4,8 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [CommonModule],
 })
-export class NgxAbstractModule {}
+export class NgxAbstractModule {
+  constructor() {
+    // Test
+  }
+}
