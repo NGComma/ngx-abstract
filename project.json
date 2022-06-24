@@ -33,7 +33,19 @@
       "options": {
         "lintFilePatterns": [
           "libs/ngx-abstract/**/*.ts",
-          "libs/ngx-abstract/**/*.html"
+          "libs/ngx-abstract/**/*.html",
+          "libs/ngx-abstract/dnd/**/*.ts",
+          "libs/ngx-abstract/dnd/**/*.html",
+          "libs/ngx-abstract/collection/**/*.ts",
+          "libs/ngx-abstract/collection/**/*.html",
+          "libs/ngx-abstract/data/**/*.ts",
+          "libs/ngx-abstract/data/**/*.html",
+          "libs/ngx-abstract/dialog/**/*.ts",
+          "libs/ngx-abstract/dialog/**/*.html",
+          "libs/ngx-abstract/form/**/*.ts",
+          "libs/ngx-abstract/form/**/*.html",
+          "libs/ngx-abstract/utils/**/*.ts",
+          "libs/ngx-abstract/utils/**/*.html"
         ]
       }
     }
