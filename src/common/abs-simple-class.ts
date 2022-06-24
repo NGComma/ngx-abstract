@@ -1,8 +1,13 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { Directive, NgZone, OnDestroy, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Directive,
+  inject,
+  NgZone,
+  OnDestroy,
+  Renderer2,
+} from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-
-import { NgxAppInjector } from '../lib/abstract.module';
 
 /**
  * Simple class which contains simple & common methods
@@ -12,9 +17,10 @@ import { NgxAppInjector } from '../lib/abstract.module';
 export class AbsSimpleClass implements OnDestroy {
   destroyed$ = new Subject<void>();
   subscription = new Subscription();
-  readonly ngZone = NgxAppInjector.get(NgZone);
-  readonly direction = NgxAppInjector.get(Directionality);
-  readonly renderer2 = NgxAppInjector.get(Renderer2);
+  readonly ngZone = inject(NgZone);
+  readonly direction = inject(Directionality);
+  readonly renderer2 = inject(Renderer2);
+  readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   /**
    * Returns true if the application is in RTL direction

@@ -3,9 +3,7 @@ import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 class ExtendedClass extends AbsComponent {
-  subscription$ = new Subject()
-    .pipe(takeUntil(this.destroyed$))
-    .subscribe(() => {});
+  subscription$ = new Subject().pipe(takeUntil(this.destroyed$)).subscribe();
 }
 
 describe('AbsComponent', () => {
@@ -18,12 +16,12 @@ describe('AbsComponent', () => {
   });
 
   it('should have a opened subscription', () => {
-    expect(new ExtendedClass().subscription$.closed).toBeFalse();
+    expect(new ExtendedClass().subscription$.closed).toBeFalsy();
   });
 
   it('should have a closed subscription', () => {
     const component = new ExtendedClass();
     component.ngOnDestroy();
-    expect(component.subscription$.closed).toBeTrue();
+    expect(component.subscription$.closed).toBeTruthy();
   });
 });
