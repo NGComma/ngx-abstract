@@ -86,3 +86,36 @@ export function suffixNumber(
 export function isDate(value: any): value is Date {
   return value instanceof Date && !isNaN(+value);
 }
+
+/**
+ * An alternative lodash defaultsDeep function. Use it on your own risk.
+ * @param to The object with default properties
+ * @param sources An array of objects with default properties
+ */
+export function defaultsDeep<T extends Record<string, any>>(
+  to: T = {} as T,
+  ...sources: T[]
+): T {
+  for (const source of sources) {
+    for (const key in source) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (to.hasOwnProperty(key)) {
+        continue;
+      }
+      if (!Array.isArray(source[key]) && typeof source[key] === 'object') {
+        to[key] = defaultsDeep(to[key], source[key]);
+      } else {
+        to[key] = source[key];
+      }
+    }
+  }
+  return to as unknown as T;
+}
+
+/**
+ * An alternative lodash cloneDeep function. Use it on your own risk.
+ * @param obj Object to be cloned.
+ */
+export function cloneDeep<T>(obj = {}): T {
+  return JSON.parse(JSON.stringify(obj));
+}
