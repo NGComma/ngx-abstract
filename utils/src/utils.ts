@@ -20,9 +20,9 @@ export function isObjectEmpty(obj: object | null): boolean {
  * ```
  */
 export function getRootHost(hostname = location.hostname): string {
-  const root = hostname.split('.').reverse().splice(0, 2).reverse().join('.');
+  const root = hostname.split(".").reverse().splice(0, 2).reverse().join(".");
   // localhost doesn't support (.) before it
-  return root === 'localhost' ? root : '.' + root;
+  return root === "localhost" ? root : "." + root;
 }
 
 /**
@@ -41,13 +41,13 @@ export function getNumberAndSuffix(
   }
   let abs = Math.abs(value);
   const rounder = Math.pow(10, fractionSize);
-  let key = '';
+  let key = "";
   const powers = [
-    { key: 'Q', value: Math.pow(10, 15) },
-    { key: 'T', value: Math.pow(10, 12) },
-    { key: 'B', value: Math.pow(10, 9) },
-    { key: 'M', value: Math.pow(10, 6) },
-    { key: 'K', value: 1000 },
+    { key: "Q", value: Math.pow(10, 15) },
+    { key: "T", value: Math.pow(10, 12) },
+    { key: "B", value: Math.pow(10, 9) },
+    { key: "M", value: Math.pow(10, 6) },
+    { key: "K", value: 1000 }
   ];
   for (const item of powers) {
     let reduced = abs / item.value;
@@ -102,7 +102,7 @@ export function defaultsDeep<T extends Record<string, any>>(
       if (to.hasOwnProperty(key)) {
         continue;
       }
-      if (!Array.isArray(source[key]) && typeof source[key] === 'object') {
+      if (!Array.isArray(source[key]) && typeof source[key] === "object") {
         to[key] = defaultsDeep(to[key], source[key]);
       } else {
         to[key] = source[key];
@@ -118,4 +118,20 @@ export function defaultsDeep<T extends Record<string, any>>(
  */
 export function cloneDeep<T>(obj = {}): T {
   return JSON.parse(JSON.stringify(obj));
+}
+
+/**
+ * Debounce a function based on delay
+ * @param callback
+ * @param delay
+ */
+export function debounce<T = void>(callback: (...args: any[]) => T, delay = 1000) {
+  let timeoutId: number | undefined;
+  return (...args: any[]): T | void => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      timeoutId = undefined;
+      callback(...args);
+    }, delay);
+  };
 }
