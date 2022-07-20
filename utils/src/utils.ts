@@ -92,10 +92,7 @@ export function isDate(value: any): value is Date {
  * @param to The object with default properties
  * @param sources An array of objects with default properties
  */
-export function defaultsDeep<T extends Record<string, any>>(
-  to: T = {} as T,
-  ...sources: T[]
-): T {
+export function defaultsDeep<T extends Record<string, any>>(to: T = {} as T, ...sources: T[]): T {
   for (const source of sources) {
     for (const key in source) {
       // eslint-disable-next-line no-prototype-builtins
