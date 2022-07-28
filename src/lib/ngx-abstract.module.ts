@@ -2,7 +2,6 @@ import { ModuleWithProviders, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { ABS_PAGE_CONFIG, IAbsPageConfig } from "../common/tokens";
-import { LazyViewportDirective } from './lazy-viewport.directive';
 
 /**
  * Default NgxAbstract configuration
@@ -22,12 +21,8 @@ export interface INgxAbstractConfig {
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [
-    LazyViewportDirective
-  ],
-  exports: [
-    LazyViewportDirective
-  ]
+  declarations: [],
+  exports: []
 })
 export class NgxAbstractModule {
   static withConfig(config: INgxAbstractConfig): ModuleWithProviders<NgxAbstractModule> {

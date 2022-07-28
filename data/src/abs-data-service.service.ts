@@ -1,8 +1,7 @@
 /* tslint:disable:variable-name */
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { CollectionViewer, DataSource } from "@angular/cdk/collections";
+import { BehaviorSubject, Observable, Subscription } from "rxjs";
+import { take } from "rxjs/operators";
 
 export type nextPageCb<T> = (page: number) => Observable<T[]>;
 
@@ -26,7 +25,6 @@ export type nextPageCb<T> = (page: number) => Observable<T[]>;
  * ```
  */
 /** @dynamic */
-@Injectable()
 export abstract class AbsDataService<T> extends DataSource<T> {
   pageSize = 50;
   private _subscription = new Subscription();
@@ -34,8 +32,8 @@ export abstract class AbsDataService<T> extends DataSource<T> {
   private _loadingData = false;
 
   constructor(
-    private nextPageCb$: nextPageCb<T>,
-    private onDestroy?: () => void
+    readonly nextPageCb$: nextPageCb<T>,
+    readonly onDestroy?: () => void
   ) {
     super();
   }

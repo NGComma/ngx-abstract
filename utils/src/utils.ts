@@ -6,7 +6,7 @@ export function randomString(from = 10, to = 5): string {
 }
 
 /**
- * Check if it's an object and it's not empty
+ * Check if it's an object, and it's not empty
  */
 export function isObjectEmpty(obj: object | null): boolean {
   return !obj || (Object.keys(obj).length === 0 && obj.constructor === Object);

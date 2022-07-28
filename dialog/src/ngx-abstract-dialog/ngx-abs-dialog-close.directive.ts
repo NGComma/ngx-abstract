@@ -1,5 +1,6 @@
 import { Directive, HostListener, Input } from '@angular/core';
 import { AbsDirective } from '@ngcomma/ngx-abstract';
+
 import { NgxAbsDialogRef } from './NgxAbsDialogRef';
 
 @Directive({

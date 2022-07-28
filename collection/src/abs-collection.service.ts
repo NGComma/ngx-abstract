@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { map, tap } from "rxjs/operators";
 
-import { AbsCustomDataService } from '@ngcomma/ngx-abstract/data';
+import { AbsCustomDataService } from "@ngcomma/ngx-abstract/data";
 
 @Injectable()
 export abstract class AbsCollectionService<T> extends AbsCustomDataService<T> {
@@ -12,6 +12,8 @@ export abstract class AbsCollectionService<T> extends AbsCustomDataService<T> {
   abstract pluralEntityName: string;
   filteredEntities$ = this.entities$.pipe(
     map((entities) =>
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       entities.sort((a, b) => b[this.uniqueKey] - a[this.uniqueKey])
     )
   );
